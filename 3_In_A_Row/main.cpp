@@ -5,7 +5,8 @@
 //
 
 #include <iostream>
-//#include <unistd.h> // Will only work on Linux/MacOS
+#include <cstdlib>
+#include <ctime>
 
 #ifdef _WINDOWS
 #include <windows.h>
@@ -41,9 +42,11 @@ void DisplayGameRules()
 void GenerateRandomNumber()
 {
     
+    srand((int)time(0));
+    
     do
     {
-    std::cout << (rand() %100 +1 ) << std::endl; // notice it is the same random number everytime and lots of them!
+        std::cout << (rand() %100 +1 )<< std::endl;
         Sleep(1000);
     }
     while(true);
