@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "3_In_A_Row/main.cpp"
-            timestampString = "545760381.461805"
+            timestampString = "545762339.438314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "DisplayGameRules()"
             landmarkType = "9">
          </BreakpointContent>

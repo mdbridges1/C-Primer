@@ -5,17 +5,15 @@
 //
 
 #include <iostream>
-#include <cstdlib>
 
 void DisplayGameRules();
 void GenerateRandomNumber();
+bool GameIsWon();
 
 int main()
     {
         DisplayGameRules();
         GenerateRandomNumber();
-        // Show play the rules for the game
-        // Start displaying random numbers
         // If 3 in a row are odd, start timer- continue random numbers store 3 in a row values
         // When user presses enter - display win or lose
         // Lose Screen - Show reason for losing - Play Again?
@@ -34,6 +32,11 @@ void DisplayGameRules()
 
 void GenerateRandomNumber()
 {
-    std::cout << (rand() %100 ) << std::endl; // notice it is the same random number everytime!
     
+    do
+    {
+    std::cout << (rand() %100 +1 ) << std::endl; // notice it is the same random number everytime and lots of them!
+    }
+    while(true);
+    //while (!GameIsWon());
 }
