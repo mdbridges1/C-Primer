@@ -18,6 +18,7 @@
 void DisplayGameRules();
 void GenerateRandomNumber();
 bool GameIsWon();
+void IsOddNumber();
 
 int main()
     {
@@ -46,7 +47,13 @@ void GenerateRandomNumber()
     
     do
     {
-        std::cout << (rand() %100 +1 )<< std::endl;
+        int randomNumber =(rand() %100 +1 );
+        std::cout << randomNumber;
+        // is the number odd?
+        if(randomNumber % 2 != 0)
+        std::cout << " odd\n";
+        else
+        std::cout << " even\n";
         Sleep(1000);
     }
     while(true);
