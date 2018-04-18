@@ -5,13 +5,18 @@
 //
 
 #include <iostream>
-#include <unistd.h> // Will only work on Linux/MacOS
+//#include <unistd.h> // Will only work on Linux/MacOS
+
+#ifdef _WINDOWS
+#include <windows.h>
+#else
+#include <unistd.h>
+#define Sleep(x) usleep((x)*1000)
+#endif
 
 void DisplayGameRules();
 void GenerateRandomNumber();
 bool GameIsWon();
-
-int SecondsBetweenNumbers = 1;
 
 int main()
     {
@@ -39,7 +44,7 @@ void GenerateRandomNumber()
     do
     {
     std::cout << (rand() %100 +1 ) << std::endl; // notice it is the same random number everytime and lots of them!
-        usleep(SecondsBetweenNumbers * 1000000);
+        Sleep(1000);
     }
     while(true);
     //while (!GameIsWon());
