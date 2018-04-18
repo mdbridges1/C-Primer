@@ -22,18 +22,23 @@ bool GameIsWon();
 void DisplayOddNumberArray();
 void IsOddNumber();
 
-int oddNumberArray[3]; // consider list
+//Global variables are bad practice- return from functions?
+
+int oddNumberArray[3]; // consider list or un ordered set
 int countOddNumbers = 0;
 int randomNumber;
-int timeBetweenNumbers = 100; //time in ms
+
+int timeBetweenNumbers = 200; //time in ms
 
 int main()
     {
         DisplayGameRules();
+        
         GenerateAndDisplayRandomNumber();
         DisplayOddNumberArray();
         
-        // If 3 in a row are odd, start timer- continue random numbers store 3 in a row values
+        
+        // TODO odd needs to be unique
         // When user presses enter - display win or lose
         // Lose Screen - Show reason for losing - Play Again?
         // Win Screen - Play again
@@ -47,7 +52,9 @@ void DisplayGameRules()
     << "A series of random numbers will now be shown\n"
     << "When you nseen 3 odd numbers in a row, press Enter\n"
     << "Be quick, I'm timing you\n\n"
-    << "Press enter to start the game\n\n";;
+    << "Press ENTER to start the game\n\n";;
+    std::cin.ignore()
+    ;
 }
 
 void GenerateAndDisplayRandomNumber()
@@ -57,7 +64,7 @@ void GenerateAndDisplayRandomNumber()
     
     do
     {
-        randomNumber =(rand() %100 + 1);
+        randomNumber =(rand() %10 + 1);
         std::cout << randomNumber;
         DisplayRandomNumber();
         std::cout << "Number of odd numbers so far: " << countOddNumbers << std::endl << std::endl;
@@ -72,9 +79,9 @@ void DisplayRandomNumber() {
     
     if(randomNumber % 2 != 0)
     {
-        std::cout << " odd";
+        //std::cout << " odd";
         //oddNumberArray[0] = randomNumber;
-        std::cout <<std::endl;
+        //std::cout << std::endl;
         oddNumberArray[countOddNumbers] = randomNumber;
         countOddNumbers ++;
         Sleep(timeBetweenNumbers);
@@ -82,7 +89,7 @@ void DisplayRandomNumber() {
     }
     else
     {
-        std::cout << " even";
+        //std::cout << " even";
         Sleep(timeBetweenNumbers);
         countOddNumbers = 0;
     }
@@ -90,5 +97,5 @@ void DisplayRandomNumber() {
 
 void DisplayOddNumberArray()
 {
-    std::cout <<"The odd numbers were: "<< oddNumberArray [0] << ", " << oddNumberArray [1] << " and " << oddNumberArray [2] << std::endl;
+    std::cout << "The odd numbers were: " << oddNumberArray [0] << ", " << oddNumberArray [1] << " and " << oddNumberArray [2] << std::endl;
 }
