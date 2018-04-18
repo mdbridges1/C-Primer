@@ -41,8 +41,8 @@ void DisplayGameRules()
 
 void GenerateRandomNumber()
 {
-    
-    srand((int)time(0));
+    auto systemTimeInSeconds = (int)time(0); // Do we use auto now??
+    srand(systemTimeInSeconds); // set random seed
     
     do
     {
