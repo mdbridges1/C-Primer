@@ -16,14 +16,18 @@
 #endif
 
 void DisplayGameRules();
-void GenerateRandomNumber();
+int GenerateRandomNumber();
+void DisplayRandomNumber();
 bool GameIsWon();
 void IsOddNumber();
+int oddNumberArray[3];
+int randomNumber;
 
 int main()
     {
         DisplayGameRules();
         GenerateRandomNumber();
+        DisplayRandomNumber();
         // If 3 in a row are odd, start timer- continue random numbers store 3 in a row values
         // When user presses enter - display win or lose
         // Lose Screen - Show reason for losing - Play Again?
@@ -31,6 +35,7 @@ int main()
         // Quit
     return 0;
     }
+
 void DisplayGameRules()
 {
     std::cout   << "Welcome to 3 In A Row\n"
@@ -40,22 +45,35 @@ void DisplayGameRules()
     << "Press enter to start the game\n\n";;
 }
 
-void GenerateRandomNumber()
+void DisplayRandomNumber() {
+    std::cout << randomNumber;
+    // is the number odd?
+    
+    if(randomNumber % 2 != 0)
+    {
+        std::cout << " odd\n";
+        std::cout << oddNumberArray[0] << oddNumberArray[1] << oddNumberArray[2];
+        std::cout <<std::endl;
+        Sleep(1500);
+    }
+    else
+    {
+        std::cout << " even\n";
+        Sleep(1500);
+    }
+}
+
+int GenerateRandomNumber()
 {
-    auto systemTimeInSeconds = (int)time(0); // Do we use auto now??
+    auto systemTimeInSeconds = (int)time(0);
     srand(systemTimeInSeconds); // set random seed
     
     do
     {
-        int randomNumber =(rand() %100 +1 );
-        std::cout << randomNumber;
-        // is the number odd?
-        if(randomNumber % 2 != 0)
-        std::cout << " odd\n";
-        else
-        std::cout << " even\n";
-        Sleep(1000);
+        randomNumber =(rand() %100 +1 );
+        DisplayRandomNumber();
     }
     while(true);
     //while (!GameIsWon());
+    return(randomNumber);
 }

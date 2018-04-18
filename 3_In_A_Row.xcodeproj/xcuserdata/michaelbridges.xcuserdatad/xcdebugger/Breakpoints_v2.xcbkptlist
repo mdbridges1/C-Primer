@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "3_In_A_Row/main.cpp"
-            timestampString = "545770026.4031481"
+            timestampString = "545772021.396063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "DisplayGameRules()"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
