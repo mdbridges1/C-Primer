@@ -52,7 +52,8 @@ void DisplayRandomNumber() {
     if(randomNumber % 2 != 0)
     {
         std::cout << " odd\n";
-        std::cout << oddNumberArray[0] << oddNumberArray[1] << oddNumberArray[2];
+        oddNumberArray[0] = randomNumber;
+        std::cout << oddNumberArray[0] << " " << oddNumberArray[1] << " " << oddNumberArray[2];
         std::cout <<std::endl;
         Sleep(1500);
     }
