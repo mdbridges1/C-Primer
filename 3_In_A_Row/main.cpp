@@ -1,5 +1,3 @@
-//
-//  main.cpp
 //  3_In_A_Row
 //
 //  Created by Michael Bridges on 18/04/2018.
@@ -8,8 +6,8 @@
 
 #include <iostream>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+int main()
+    {
+    std::cout << "Welcome to 3 In A Row\n";
     return 0;
-}
+    }
