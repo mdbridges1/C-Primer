@@ -22,12 +22,14 @@ bool GameIsWon();
 void IsOddNumber();
 int oddNumberArray[3];
 int randomNumber;
+int countOddNumbers = 0;
 
 int main()
     {
         DisplayGameRules();
         GenerateRandomNumber();
         DisplayRandomNumber();
+        
         // If 3 in a row are odd, start timer- continue random numbers store 3 in a row values
         // When user presses enter - display win or lose
         // Lose Screen - Show reason for losing - Play Again?
@@ -53,14 +55,17 @@ void DisplayRandomNumber() {
     {
         std::cout << " odd\n";
         oddNumberArray[0] = randomNumber;
-        std::cout << oddNumberArray[0] << " " << oddNumberArray[1] << " " << oddNumberArray[2];
+        // std::cout << oddNumberArray[0] << " " << oddNumberArray[1] << " " << oddNumberArray[2];
         std::cout <<std::endl;
+        countOddNumbers ++;
+        std::cout << "Number of odd numbers so far: " << countOddNumbers << std::endl;
         Sleep(1500);
     }
     else
     {
         std::cout << " even\n";
         Sleep(1500);
+        countOddNumbers = 0;
     }
 }
 
