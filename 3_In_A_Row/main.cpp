@@ -17,12 +17,14 @@
 
 void DisplayGameRules();
 void GenerateAndDisplayRandomNumber();
+void DisplayRandomNumber();
 bool GameIsWon();
 void DisplayOddNumberArray();
 void IsOddNumber();
-int oddNumberArray[3];
-int randomNumber;
+
+int oddNumberArray[3]; // consider list
 int countOddNumbers = 0;
+int randomNumber;
 int timeBetweenNumbers = 100; //time in ms
 
 int main()
@@ -48,6 +50,22 @@ void DisplayGameRules()
     << "Press enter to start the game\n\n";;
 }
 
+void GenerateAndDisplayRandomNumber()
+{
+    auto systemTimeInSeconds = (int)time(0);
+    srand(systemTimeInSeconds); // set random seed
+    
+    do
+    {
+        randomNumber =(rand() %100 + 1);
+        std::cout << randomNumber;
+        DisplayRandomNumber();
+        std::cout << "Number of odd numbers so far: " << countOddNumbers << std::endl << std::endl;
+    }
+    while(countOddNumbers < 3);
+    return;
+}
+
 void DisplayRandomNumber() {
     
     // is the number odd?
@@ -70,23 +88,7 @@ void DisplayRandomNumber() {
     }
 }
 
-void GenerateAndDisplayRandomNumber()
-{
-    auto systemTimeInSeconds = (int)time(0);
-    srand(systemTimeInSeconds); // set random seed
-    
-    do
-    {
-        randomNumber =(rand() %100 +1 );
-        std::cout << randomNumber;
-        DisplayRandomNumber();
-        std::cout << "Number of odd numbers so far: " << countOddNumbers << std::endl << std::endl;
-    }
-    while(countOddNumbers < 3);
-    return;
-}
-
 void DisplayOddNumberArray()
 {
-    std::cout <<"The odd numbers were: "<< oddNumberArray [0] << ", " << oddNumberArray [1] << " and " << oddNumberArray [3] << std::endl;
+    std::cout <<"The odd numbers were: "<< oddNumberArray [0] << ", " << oddNumberArray [1] << " and " << oddNumberArray [2] << std::endl;
 }
