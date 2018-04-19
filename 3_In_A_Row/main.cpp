@@ -18,6 +18,7 @@
 void DisplayGameRules();
 void SetRandomSeed();
 void DisplayRandomNumber();
+void SortArrayElements();
 void AreArrayElementsUnique();
 void DisplayOddNumberArray();
 void IsOddNumber();
@@ -41,6 +42,7 @@ int main()
             DisplayRandomNumber();
         }
         while(countOddNumbers < arraySize);
+        SortArrayElements();
         AreArrayElementsUnique();
         DisplayOddNumberArray();
         
@@ -88,9 +90,19 @@ void DisplayRandomNumber() {
     }
 }
 
-void AreArrayElementsUnique()
+void SortArrayElements()
 {
     std::sort( oddNumberArray, oddNumberArray + arraySize);
+}
+
+void AreArrayElementsUnique()
+{
+    //step through array and see if any two consecutive numbers are the same
+    //start with array element n, compare to n++
+    //increase n but one and check again.
+    //if the same start showing odd numbers again
+    //else trigger timer
+    //continue showing random numbers
 }
 
 void DisplayOddNumberArray()
