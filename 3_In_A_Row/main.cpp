@@ -7,7 +7,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <chrono>
 
+// Instead of ifdef, implement:  std::this_thread::sleep_for()
 #ifdef _WINDOWS
 #include <windows.h>
 #else
@@ -23,6 +25,7 @@ void SortArrayElements();
 void AreArrayElementsUnique();
 void DisplayOddNumberArray();
 void IsOddNumber();
+void StartTimer();
 
 //Global variables are bad practice - return from functions?
 const int arraySize = 3;
@@ -55,14 +58,16 @@ void PlayGame()
 {
     do
     {
-        randomNumber =(rand() %10 + 1);
+        randomNumber =(rand() %arraySize
+                       
+                       + 1);
         std::cout << randomNumber << std::endl;
         PopulateArray();
     }
     while(countOddNumbers < arraySize);
     SortArrayElements();
     AreArrayElementsUnique();
-    DisplayOddNumberArray();
+    //DisplayOddNumberArray();
     
     // TODO odd needs to be unique
     // When user presses enter - display win or lose
@@ -108,29 +113,34 @@ void AreArrayElementsUnique()
     {
         origVal = oddNumberArray[a];
         
-        for (b = a+ 1 ; b < arraySize ; b++)
+        for (b = a+ 1 ; b < arraySize ; b++) //step through array any two consecutive numbers same?
         {
             if(origVal == oddNumberArray[b])
             {
-                compVal = 1;
+                compVal = 1; // If number are the same, assign a value of 1 to the compVal
             }
         }
     }
-    if (compVal == 1)
+    if (compVal == 1) // If compVal is 1 , then continue the game.
     {
         std::cout << "NOT UNIQUE";
         PlayGame();
     }
     else
     {
-        std::cout << "UNIQUE" ;
+        std::cout << "UNIQUE" ; // if all numbers in the array are unique
+        
+        
+        //StartTimer();
+        PlayGame();
     }
-    //step through array and see if any two consecutive numbers are the same
-    //start with array element n, compare to n++
-    //increase n but one and check again.
-    //if the same start showing odd numbers again
+    
     //else trigger timer
-    //continue showing random numbers
+}
+
+void StartTimer()
+{
+    return;
 }
 
 void DisplayOddNumberArray()
