@@ -16,25 +16,32 @@
 #endif
 
 void DisplayGameRules();
-void GenerateAndDisplayRandomNumber();
+void SetRandomSeed();
 void DisplayRandomNumber();
-bool GameIsWon();
+void AreArrayElementsUnique();
 void DisplayOddNumberArray();
 void IsOddNumber();
 
 //Global variables are bad practice- return from functions?
-
-int oddNumberArray[3]; // consider list or un ordered set
+const int arraySize = 3;
+int oddNumberArray[arraySize]; // consider list or un ordered set
 int countOddNumbers = 0;
 int randomNumber;
 
-int timeBetweenNumbers = 200; //time in ms
+int timeBetweenNumbers = 10; //time in ms
 
 int main()
     {
         DisplayGameRules();
-        
-        GenerateAndDisplayRandomNumber();
+        SetRandomSeed();
+        do
+        {
+            randomNumber =(rand() %100 + 1);
+            std::cout << randomNumber << std::endl;
+            DisplayRandomNumber();
+        }
+        while(countOddNumbers < arraySize);
+        AreArrayElementsUnique();
         DisplayOddNumberArray();
         
         
@@ -57,19 +64,10 @@ void DisplayGameRules()
     ;
 }
 
-void GenerateAndDisplayRandomNumber()
+void SetRandomSeed()
 {
     auto systemTimeInSeconds = (int)time(0);
     srand(systemTimeInSeconds); // set random seed
-    
-    do
-    {
-        randomNumber =(rand() %10 + 1);
-        std::cout << randomNumber;
-        DisplayRandomNumber();
-        std::cout << "Number of odd numbers so far: " << countOddNumbers << std::endl << std::endl;
-    }
-    while(countOddNumbers < 3);
     return;
 }
 
@@ -79,20 +77,20 @@ void DisplayRandomNumber() {
     
     if(randomNumber % 2 != 0)
     {
-        //std::cout << " odd";
-        //oddNumberArray[0] = randomNumber;
-        //std::cout << std::endl;
         oddNumberArray[countOddNumbers] = randomNumber;
         countOddNumbers ++;
         Sleep(timeBetweenNumbers);
-        
-    }
+        }
     else
     {
-        //std::cout << " even";
         Sleep(timeBetweenNumbers);
         countOddNumbers = 0;
     }
+}
+
+void AreArrayElementsUnique()
+{
+    std::sort( oddNumberArray, oddNumberArray + arraySize);
 }
 
 void DisplayOddNumberArray()
