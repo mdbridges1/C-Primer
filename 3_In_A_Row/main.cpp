@@ -46,12 +46,13 @@ int main()
 
 void DisplayGameRules()
 {
-    std::cout   << "Welcome to 3 In A Row\n"
+    //SAM: Is this style OK, if not why not, what is prefered?
+    std::cout   << "Welcome to " << arraySize << " In A Row\n"
     << "A series of random numbers will now be shown\n"
-    << "When you see 3 UNIQUE odd numbers in a row, press Enter\n"
+    << "When you see " << arraySize << " UNIQUE odd numbers in a row, press Enter\n"
     << "Be quick, I'm timing you\n\n"
     << "Press ENTER to start the game\n\n";;
-    std::cin.ignore();
+    std::cin.ignore(); // Waits for uder to press enter
 }
 
 void PlayGame()
