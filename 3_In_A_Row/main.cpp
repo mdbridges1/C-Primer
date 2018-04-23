@@ -5,7 +5,7 @@
 //
 
 #include <iostream>
-#include <cstdlib>
+#include <cstdlib> // use std:rand instead
 #include <chrono> // for timer display
 typedef std::chrono::high_resolution_clock Clock;
 
@@ -27,9 +27,10 @@ void DisplayOddNumberArray();
 void IsOddNumber();
 void StartTimer();
 
-//Global variables are bad practice - return from functions?
+//TODO Remove Global variables are bad practice - return from functions? - Pass things around NOT global!!
+// Global is lazy and with catchup with you later on.
 const int arraySize = 3;
-int oddNumberArray[arraySize]; // consider list or un ordered set
+int oddNumberArray[arraySize]; // consider list or un ordered set --std::vectors variable length array
 int countOddNumbers = 0;
 int randomNumber;
 
@@ -47,24 +48,24 @@ int main()
 void DisplayGameRules()
 {
     //SAM: Is this style OK, if not why not, what is prefered?
-    std::cout   << "Welcome to " << arraySize << " In A Row\n"
-    << "A series of random numbers will now be shown\n"
-    << "When you see " << arraySize << " UNIQUE odd numbers in a row, press Enter\n"
-    << "Be quick, I'm timing you\n\n"
-    << "Press ENTER to start the game\n\n";;
-    std::cin.ignore(); // Waits for uder to press enter
+    std::cout   << "Welcome to " << arraySize << " In A Row\n" //TODO replace \n with endl for consistency
+                << "A series of random numbers will now be shown\n"
+                << "When you see " << arraySize << " UNIQUE odd numbers in a row, press Enter\n"
+                << "Be quick, I'm timing you\n\n"
+                << "Press ENTER to start the game\n\n";
+    std::cin.ignore(); // Waits for user to press enter, TODO, Are you ready? in do while loop waiting for Y/N input  cin getline
 }
 
 void PlayGame()
 {
     do
     {
-        randomNumber =(rand() %9 +1);
+        randomNumber =(rand() %9 +1);   //std:random_device?  // std::mt19937  ?  Options options  uniformly distribution required
         std::cout << randomNumber << std::endl;
         PopulateArray();
     }
     while(countOddNumbers < arraySize);
-    SortArrayElements();
+    SortArrayElements(); //Functions are factions, give them input, make some output.
     AreArrayElementsUnique();
     DisplayOddNumberArray();
     
@@ -139,7 +140,7 @@ void AreArrayElementsUnique()
 void StartTimer()
 {
     
-    auto tStart = Clock::now();
+    auto tStart = Clock::now();  //std duration<float>  duration<cast>
     auto tEnd = Clock::now();
     //asana
     //std::out << std::chrono::duration_cast<<#class _ToDuration#>>(<#const duration<_Rep, _Period> &__fd#>) // Need to work this out
