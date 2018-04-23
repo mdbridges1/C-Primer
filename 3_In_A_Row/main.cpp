@@ -6,8 +6,8 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
-#include <chrono>
+#include <chrono> // for timer display
+typedef std::chrono::high_resolution_clock Clock;
 
 // Instead of ifdef, implement:  std::this_thread::sleep_for()
 #ifdef _WINDOWS
@@ -59,16 +59,14 @@ void PlayGame()
 {
     do
     {
-        randomNumber =(rand() %arraySize
-                       
-                       + 1);
+        randomNumber =(rand() %9 +1);
         std::cout << randomNumber << std::endl;
         PopulateArray();
     }
     while(countOddNumbers < arraySize);
     SortArrayElements();
     AreArrayElementsUnique();
-    //DisplayOddNumberArray();
+    DisplayOddNumberArray();
     
     // TODO odd needs to be unique
     // When user presses enter - display win or lose
@@ -124,7 +122,7 @@ void AreArrayElementsUnique()
     }
     if (compVal == 1) // If compVal is 1 , then continue the game.
     {
-        std::cout << "NOT UNIQUE";
+        std::cout << "NOTUNIQUE";
         PlayGame();
     }
     else
@@ -136,12 +134,16 @@ void AreArrayElementsUnique()
         PlayGame();
     }
     
-    //else trigger timer
 }
 
 void StartTimer()
 {
-    return;
+    
+    auto tStart = Clock::now();
+    auto tEnd = Clock::now();
+    //asana
+    //std::out << std::chrono::duration_cast<<#class _ToDuration#>>(<#const duration<_Rep, _Period> &__fd#>) // Need to work this out
+    return;   // what happen when you don't return from a function, but the code still runs anyway, what is it assuming?
 }
 
 void DisplayOddNumberArray()
